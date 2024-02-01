@@ -1,0 +1,135 @@
+!(function () {
+  let e = document.createElement("script"),
+    t = document.head || document.getElementsByTagName("head")[0];
+  (e.src =
+    "https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.0/lib/index.js"),
+    (e.async = !0),
+    (e.onload = () => {
+      window.WebChat.default(
+        {
+          initPayload: "banner1 banner1",
+          customData: {"userId": "123"},
+        //   socketUrl: "https://service29.secureother.com:9080",
+          socketUrl: "https://service29.secureother.com:9080",
+          title: "IS Bot",
+          subtitle: "Powered by Innovative Solutions",
+          inputTextFieldHint: "Type a message...",
+          connectingText: "Waiting for server...",
+          hideWhenNotConnected: false,
+          fullScreenMode: false,         
+          profileAvatar: "images/gimp-icon.png",         
+        },
+        null
+      );
+    }),
+    t.insertBefore(e, t.firstChild);
+})();
+
+$(window).on('load',function(){
+  $('.loaderwrap').fadeOut('slow');
+  $('body').removeClass('overflow');
+  new WOW().init();
+})
+
+$(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 50) {
+        $(".navbar-classic.navbar").addClass("darkHeader");
+    }
+    else {
+        $(".navbar-classic.navbar").removeClass("darkHeader");
+    }
+});
+
+$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+  if (!$(this).next().hasClass('show')) {
+      $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+  }
+  var $subMenu = $(this).next(".dropdown-menu");
+  $subMenu.toggleClass('show');
+
+  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+      $('.dropdown-submenu .show').removeClass("show");
+  });
+
+  return false;
+});
+
+$('.carousel-1').owlCarousel({
+  loop:true,
+  margin:20,
+  nav:false,
+  dots:false,
+  autoplay:true,
+  responsive:{
+      0:{
+          items:1
+      },
+      600:{
+          items:3
+      },
+      1000:{
+          items:3
+      }
+  }
+})
+
+$('.carousel-2').owlCarousel({
+  stagePadding: 200,
+  loop:true,
+  margin:20,
+  nav:false,
+  dots:false,
+  rtl:true,
+  autoplay:true,
+  responsive:{
+      0:{
+          items:1,
+          stagePadding: 80
+      },
+      600:{
+          items:3
+      },
+      1000:{
+          items:3
+      }
+  }
+})
+
+$('.carousel-3').owlCarousel({
+  loop:true,
+  margin:30,
+  nav:true,
+  autoplay:true,
+  autoplayHoverPause:true,
+  responsive:{
+      0:{
+          items:1
+      },
+      600:{
+          items:2
+      },
+      1000:{
+          items:3
+      }
+  }
+})
+
+$(document).ready(function() {
+    var hash = window.location.href.slice(window.location.href.indexOf('#'));
+    if (hash !== '1') {
+        $(hash).modal('show');
+    }
+    var url = window.location.href; 
+    $('.open-position .small-btn').click(function() {
+        var id = $(this).attr("data-target"); 
+        if (url.indexOf('#') > 0) {
+            var updateUrl =  url.replace(hash,'');
+            window.location.href = updateUrl + id;
+        }
+        else {
+            window.location.href = url + id;
+        }
+    })
+})
